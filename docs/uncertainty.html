@@ -3,74 +3,77 @@
 <head>
   <meta charset="utf-8">
   <title>Uncertainty</title>
+  <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAQAAAAIAAAADAAAAAwADAAQAAwAXFhUAAQABAAIAAQADAAEABAABAAIBAAAEAQMAAQACAAIAAgADAAIAAgEBAAMBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggBAAgICQcJCAgICgkIDAcGBwICAgIJCQgICAkIAw8HCAcDCAIIAQgICQIJAgIJCAIHCAIQAggCEAEICAIDAwEICAIBAAIJAgIDAwMICgkJAggJCAgICAkJAggQAwIJCAgCAgIJAgEIAgEBCQMICgEIAgICAggJBwECAg8IEAQCCAgHCQIIAgIIEAgDCAgJCAEBAAgCEQICAQECAgIJBwgBCAcBAQgCCAEABwECCQIIAggCCAgIAggCBwICCQcDAgMCCAIBAwICAQMJCQkJCgMHBwgCAgICAggLEAgIAggICA8IDQkODwgJAgkJDw8FCAgCEAgICAgIDggCCQ4PCQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" rel="icon" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FEAR UNCERTAINTY DOUBT">
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-        color: #fff;
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      color: #fff;
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      font-size: 6vw;
+      background: #000;
+    }
+
+    h2 {
+      font-size: 19vh;
+      padding-right: 1em;
+      line-height: 1;
+    }
+
+    .marquee {
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      width: 100%;
+      box-sizing: border-box;
+      height: 20vh;
+    }
+
+    .marqueeInner {
+      display: inline-flex;
+    }
+
+    .marqueeForward {
+      animation: Marquee 50s linear infinite;
+    }
+    .marqueeReverse {
+      animation: MarqueeReverse 50s linear infinite;
+    }
+
+    .marqueeInner > * {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    @keyframes Marquee {
+      0% {
+        transform: translate3d(-50%, 0, 0);
       }
 
-      body {
-        display: grid;
-        grid-template-rows: repeat(5, 1fr);
-        grid-template-columns: repeat(3, 1fr);
-        font-size: 6vw;
-        background: #000;
+      100% {
+        transform: translate3d(0%, 0, 0);
+      }
+    }
+
+    @keyframes MarqueeReverse {
+      0% {
+        transform: translate3d(0%, 0, 0);
       }
 
-      h2 {
-        font-size: 19vh;
-        padding-right: 1em;
-        line-height: 1;
+      100% {
+        transform: translate3d(-50%, 0, 0);
       }
-
-      .marquee {
-        overflow: hidden;
-        display: inline-flex;
-        align-items: center;
-        width: 100%;
-        box-sizing: border-box;
-        height: 20vh;
-      }
-
-      .marqueeInner {
-        display: inline-flex;
-      }
-
-      .marqueeForward {
-        animation: Marquee 50s linear infinite;
-      }
-      .marqueeReverse {
-        animation: MarqueeReverse 50s linear infinite;
-      }
-
-      .marqueeInner > * {
-        display: inline-block;
-        white-space: nowrap;
-      }
-
-      @keyframes Marquee {
-        0% {
-          transform: translate3d(-50%, 0, 0);
-        }
-
-        100% {
-          transform: translate3d(0%, 0, 0);
-        }
-      }
-
-      @keyframes MarqueeReverse {
-        0% {
-          transform: translate3d(0%, 0, 0);
-        }
-
-        100% {
-          transform: translate3d(-50%, 0, 0);
-        }
-      }
-    </style>
+    }
+  </style>
 </head>
 <body>
 

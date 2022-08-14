@@ -41,12 +41,12 @@ contract ThisWontLastURI {
     tokens[4].thumbnail = 'ipfs://...';
 
     tokens[5].name = 'fear';
-    tokens[5].description = 'Fear Uncertainty Doubt';
+    tokens[5].description = 'FEAR UNCERTAINTY DOUBT';
     tokens[5].uri = 'ipfs://...';
     tokens[5].thumbnail = 'ipfs://...';
 
     tokens[6].name = 'uncertainty';
-    tokens[6].description = 'Fear Uncertainty Doubt';
+    tokens[6].description = 'FEAR UNCERTAINTY DOUBT;
     tokens[6].uri = 'ipfs://...';
     tokens[6].thumbnail = 'ipfs://...';
 
