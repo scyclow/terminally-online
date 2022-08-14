@@ -125,8 +125,6 @@
     box.style.left = `${xOff}px`
     box.style.top = `${yOff}px`
 
-    // debugger
-
     let reset = false
     if (rect.bottom >= borderRect.bottom - padding) {
       angle = rnd(Math.PI/2, Math.PI*1.5)
@@ -144,7 +142,6 @@
       angle = rnd(0, Math.PI)
       reset = true
     }
-
 
     if (reset) {
       document.body.className = sample([

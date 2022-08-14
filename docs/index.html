@@ -30,12 +30,29 @@
       align-items: center;
     }
 
-    a {
+    #fw {
+      background: #222;
+      opacity: 0.98;
+      color: #888;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    #fw:hover {
+      color: #fff;
+      opacity: 0.85;
+    }
+
+    a, #fw {
       position: absolute;
       margin-top: -20px;
     }
 
-    iframe, a {
+    iframe, a, #fw {
       width: 23vw;
       height: 24.5vh;
     }
@@ -45,7 +62,7 @@
         grid-template-columns: 1fr 1fr 1fr;
       }
 
-      iframe, a {
+      iframe, a, #fw {
         width: 31vw;
         height: 20vw;
       }
@@ -56,7 +73,7 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      iframe, a {
+      iframe, a, #fw {
         width: 48vw;
         height: 30vw;
       }
@@ -67,7 +84,7 @@
         grid-template-columns: 1fr;
       }
 
-      iframe, a {
+      iframe, a, #fw {
         width: 97vw;
         height: 60vw;
       }
@@ -88,6 +105,7 @@
       <caption>Money</caption>
       <a target="_blank" href="./money.html"></a>
     </div>
+
     <div>
       <iframe src="./life.html"></iframe>
       <caption>Life</caption>
@@ -110,6 +128,7 @@
       <iframe src="./fear.html"></iframe>
       <caption>Fear</caption>
       <a target="_blank" href="./fear.html"></a>
+      <div id="fw">REMOVE FLASH WARNING</div>
     </div>
 
     <div>
@@ -136,17 +155,11 @@
       <a target="_blank" href="./hell.html"></a>
     </div>
 
-
-
-
-
     <div>
       <iframe src="./stop.html"></iframe>
       <caption>Stop</caption>
       <a target="_blank" href="./stop.html"></a>
     </div>
-
-
 
     <div>
       <iframe src="./yes.html"></iframe>
@@ -156,4 +169,10 @@
   </main>
 
 </body>
+
+<script type="text/javascript">
+  document.getElementById('fw').onclick = () => {
+    document.getElementById('fw').style.display = 'none'
+  }
+</script>
 </html>
