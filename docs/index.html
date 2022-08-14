@@ -27,6 +27,11 @@
       row-gap: 1.5vw;
     }
 
+    footer {
+      text-align: center;
+      padding: 2em 0;
+    }
+
     main div {
       display: flex;
       flex-direction: column;
@@ -51,14 +56,30 @@
       opacity: 0.85;
     }
 
-    a, #fw {
+    .click-target, #fw {
       position: absolute;
       margin-top: -20px;
     }
 
-    iframe, a, #fw {
+    #fw {
+      margin-top: -19px;
+    }
+
+    iframe, .click-target, #fw {
       width: 23vw;
       height: 24.5vh;
+    }
+
+    .night-mode {
+      background: #000;
+      color: #fff;
+    }
+    .night-mode a, .night-mode a:visited {
+      color: #fff;
+    }
+
+    .night-mode iframe {
+      border: 1px solid;
     }
 
     @media (max-width: 1400px) {
@@ -66,7 +87,7 @@
         grid-template-columns: 1fr 1fr 1fr;
       }
 
-      iframe, a, #fw {
+      iframe, .click-target, #fw {
         width: 31vw;
         height: 20vw;
       }
@@ -77,7 +98,7 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      iframe, a, #fw {
+      iframe, .click-target, #fw {
         width: 48vw;
         height: 30vw;
       }
@@ -88,7 +109,7 @@
         grid-template-columns: 1fr;
       }
 
-      iframe, a, #fw {
+      iframe, .click-target, #fw {
         width: 97vw;
         height: 60vw;
       }
@@ -101,76 +122,80 @@
     <div>
       <iframe src="./time.html"></iframe>
       <caption>Time</caption>
-      <a target="_blank" href="./time.html"></a>
+      <a class="click-target" target="_blank" href="./time.html"></a>
     </div>
 
     <div>
       <iframe src="./money.html"></iframe>
       <caption>Money</caption>
-      <a target="_blank" href="./money.html"></a>
+      <a class="click-target" target="_blank" href="./money.html"></a>
     </div>
 
     <div>
       <iframe src="./life.html"></iframe>
       <caption>Life</caption>
-      <a target="_blank" href="./life.html"></a>
+      <a class="click-target" target="_blank" href="./life.html"></a>
     </div>
 
     <div>
       <iframe src="./death.html"></iframe>
       <caption>Death</caption>
-      <a target="_blank" href="./death.html"></a>
+      <a class="click-target" target="_blank" href="./death.html"></a>
     </div>
 
     <div>
       <iframe src="./fomo.html"></iframe>
       <caption>FOMO</caption>
-      <a target="_blank" href="./fomo.html"></a>
+      <a class="click-target" target="_blank" href="./fomo.html"></a>
     </div>
 
     <div>
       <iframe src="./fear.html"></iframe>
       <caption>Fear</caption>
-      <a target="_blank" href="./fear.html"></a>
+      <a class="click-target" target="_blank" href="./fear.html"></a>
       <div id="fw">REMOVE FLASH WARNING</div>
     </div>
 
     <div>
       <iframe src="./uncertainty.html"></iframe>
       <caption>Uncertainty</caption>
-      <a target="_blank" href="./uncertainty.html"></a>
+      <a class="click-target" target="_blank" href="./uncertainty.html"></a>
     </div>
 
     <div>
       <iframe src="./doubt.html"></iframe>
       <caption>Doubt</caption>
-      <a target="_blank" href="./doubt.html"></a>
+      <a class="click-target" target="_blank" href="./doubt.html"></a>
     </div>
 
     <div>
       <iframe src="./god.html"></iframe>
       <caption>God</caption>
-      <a target="_blank" href="./god.html"></a>
+      <a class="click-target" target="_blank" href="./god.html"></a>
     </div>
 
     <div>
       <iframe src="./hell.html"></iframe>
       <caption>Hell</caption>
-      <a target="_blank" href="./hell.html"></a>
+      <a class="click-target" target="_blank" href="./hell.html"></a>
     </div>
 
     <div>
       <iframe src="./stop.html"></iframe>
       <caption>Stop</caption>
-      <a target="_blank" href="./stop.html"></a>
+      <a class="click-target" target="_blank" href="./stop.html"></a>
     </div>
 
     <div>
       <iframe src="./yes.html"></iframe>
       <caption>Yes</caption>
-      <a target="_blank" href="./yes.html"></a>
+      <a class="click-target" target="_blank" href="./yes.html"></a>
     </div>
   </main>
+
+  <footer>
+    <a href="https://steviep.xyz" target="_blank">steviep.xyz</a> (2022)
+  </footer>
 
 </body>
 
@@ -178,5 +203,10 @@
   document.getElementById('fw').onclick = () => {
     document.getElementById('fw').style.display = 'none'
   }
+
+
+  var hours = new Date().getHours();
+  if (hours < 5 || hours > 22) document.body.className = 'night-mode';
+
 </script>
 </html>
