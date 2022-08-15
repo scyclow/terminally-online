@@ -11,7 +11,7 @@ interface ITokenURI {
 contract TerminallyOnline is ERC721, Ownable {
   ITokenURI public tokenURIContract;
 
-  address public artistAddress;
+  address public multisig;
 
   address private royaltyBenificiary;
   uint16 private royaltyBasisPoints = 1000;
@@ -23,15 +23,16 @@ contract TerminallyOnline is ERC721, Ownable {
   event TokenEvent(address indexed poster, uint256 indexed tokenId, string indexed eventType, string content);
 
   constructor() ERC721("Terminally Online", 'ONLINE') {
-    artistAddress = msg.sender;
+    multisig = msg.sender;
     royaltyBenificiary = msg.sender;
   }
 
-  modifier onlyArtist() {
-    require(artistAddress == _msgSender(), 'Caller is not the minting address');
+  modifier onlyMultisig() {
+    require(multisig == _msgSender(), 'Caller is not the multisig address');
     _;
   }
 
+  // Base functionality
   function totalSupply() external view returns (uint256) {
     return tokenCount;
   }
@@ -40,20 +41,18 @@ contract TerminallyOnline is ERC721, Ownable {
     return _exists(tokenId);
   }
 
-
-  function setArtistAddress(address artist) external onlyArtist {
-    artistAddress = artist;
-  }
-
-  function mint(address to, uint256 tokenId) external onlyArtist {
+  function mint(address to, uint256 tokenId) external onlyOwner {
     _mint(to, tokenId);
     tokenCount++;
   }
 
-  function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
-    return tokenURIContract.tokenURI(tokenId);
+  // Multisig update
+  function setMultisigContract(address newAddress) external onlyMultisig {
+    multisig = newAddress;
   }
 
+
+  // Events
   function emitTokenEvent(uint256 tokenId, string calldata eventType, string calldata content) external {
     require(
       owner() == _msgSender() || ERC721.ownerOf(tokenId) == _msgSender(),
@@ -62,17 +61,23 @@ contract TerminallyOnline is ERC721, Ownable {
     emit TokenEvent(_msgSender(), tokenId, eventType, content);
   }
 
-  function emitProjectEvent(string calldata eventType, string calldata content) external onlyOwner {
+  function emitProjectEvent(string calldata eventType, string calldata content) external onlyMultisig {
     emit ProjectEvent(_msgSender(), eventType, content);
   }
 
-  function setTokenURIContract(address _tokenURIAddress) external onlyOwner {
+
+  // Token URI
+  function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+    return tokenURIContract.tokenURI(tokenId);
+  }
+
+  function setTokenURIContract(address _tokenURIAddress) external onlyMultisig {
     tokenURIContract = ITokenURI(_tokenURIAddress);
   }
 
 
-
-  function updateLicense(string calldata newLicense) external onlyArtist {
+  // Contract owner actions
+  function updateLicense(string calldata newLicense) external onlyOwner {
     license = newLicense;
   }
 
@@ -80,7 +85,7 @@ contract TerminallyOnline is ERC721, Ownable {
   function setRoyaltyInfo(
     address _royaltyBenificiary,
     uint16 _royaltyBasisPoints
-  ) external onlyArtist {
+  ) external onlyOwner {
     royaltyBenificiary = _royaltyBenificiary;
     royaltyBasisPoints = _royaltyBasisPoints;
   }

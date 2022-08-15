@@ -1,11 +1,16 @@
-// ERC721 admin contract
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.11;
+
+import "hardhat/console.sol";
+
 
 interface ERC721 {
   function ownerOf(uint256 tokenId) external view returns (address);
   function totalSupply() external view returns (uint256);
 }
 
-contract Gov {
+contract Multisig {
   ERC721 erc721;
 
   address public admin;
@@ -35,7 +40,7 @@ contract Gov {
   /*
     target    - target contract
     value     - amount of ETH to send
-    calldata_ - abi.encodeWithSignature("functionToCall(string,uint256)", "function signature + args", 123)
+    calldata_ - abi.encodeWithSignature("functionToCall(string,uint256)", "arg1", 123)
   */
   function propose(
     uint256 tokenId,
@@ -98,9 +103,12 @@ contract Gov {
   }
 
   function setAdmin(address _admin) public {
-    require(address(this) == msg.sender);
+    require(address(this) == msg.sender, 'Caller must equal this contract');
     admin = _admin;
   }
+
+  receive() external payable {}
+  fallback() external payable {}
 }
 
 library Address {

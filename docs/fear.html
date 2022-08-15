@@ -125,7 +125,7 @@
   try {
     const hidden = window.localStorage.getItem('fwHidden')
 
-    if (!hidden) {
+    if (!hidden && window.location === window.parent.location) {
       const fw = document.getElementById('fw')
       fw.style.display = 'flex'
       fw.onclick = () => {
