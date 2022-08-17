@@ -12,13 +12,14 @@ contract TokenURI {
     string description;
     string uri;
     string thumbnail;
+    bool still;
   }
 
   TokenData[12] public tokens;
 
   address public baseAddress;
-  string public externalUrl = 'terminallyonline.eth.link';
-  string public baseURI = 'ipfs://bafybeige5hd3wp3ewrj5pp4u4cmfuiasxxhprrszcwdglzt3vhzqhgcm4u';
+  string public externalUrl = 'terminallyonline.eth.limo';
+  string public baseURI = 'ipfs://bafybeieeqltedlsy7rhesghxavbbdc5gyqg4odoabd6ynbi77wbwh4rf6y';
 
   constructor(address _baseAddress) {
     baseAddress = _baseAddress;
@@ -66,10 +67,12 @@ contract TokenURI {
     tokens[10].name = 'stop';
     tokens[10].description = 'STOP! Unless you understand exactly what you are doing';
     tokens[10].uri = 'ipfs://bafkreibxf6te63sfuvnu3zrji64iitp3txycvazv2wub57ramvquohhqjm';
+    tokens[10].still = true;
 
     tokens[11].name = 'yes';
     tokens[11].description = 'Is this all there is? Yes!';
     tokens[11].uri = 'ipfs://bafkreiadu556ki44k2tihpho5jrpcppxzw7nhskoznhq6deo73ntohtbjq';
+    tokens[11].still = true;
   }
 
   modifier onlyOwner() {
@@ -86,13 +89,13 @@ contract TokenURI {
     string memory name = tokens[tokenId].name;
     string memory description = tokens[tokenId].description;
     string memory uri = tokens[tokenId].uri;
-    string memory thumbnail = string(abi.encodePacked(baseURI, '/', name, '.png'));
+    string memory thumbnail = string(abi.encodePacked(baseURI, '/', name, tokens[tokenId].still ? '.png' : '.gif'));
     string memory tokenExternalUrl = string(abi.encodePacked(name, '.', externalUrl));
 
     string memory json = Base64.encode(
       abi.encodePacked(
         '{"name": "', name,
-        '", "description": "', description,
+        '", "description": "', name, '.terminallyonline.eth =>', description,
         '", "animation_url": "', uri,
         '", "image": "', thumbnail,
         '", "external_url": "', tokenExternalUrl,

@@ -42,6 +42,7 @@ contract TerminallyOnline is ERC721, Ownable {
   }
 
   function mint(address to, uint256 tokenId) external onlyOwner {
+    require(tokenId < 12);
     _mint(to, tokenId);
     tokenCount++;
   }
@@ -67,11 +68,15 @@ contract TerminallyOnline is ERC721, Ownable {
 
 
   // Token URI
+
+  event BatchMetadataUpdate(uint256 _fromTokenId, uint256 _toTokenId);
+
   function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
     return tokenURIContract.tokenURI(tokenId);
   }
 
   function setTokenURIContract(address _tokenURIAddress) external onlyMultisig {
+    if (tokenCount > 0) emit BatchMetadataUpdate(0, tokenCount - 1);
     tokenURIContract = ITokenURI(_tokenURIAddress);
   }
 
