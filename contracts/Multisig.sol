@@ -2,16 +2,12 @@
 
 pragma solidity ^0.8.11;
 
-import "hardhat/console.sol";
+import "./Dependencies.sol";
+import "./TerminallyOnline.sol";
 
-
-interface ERC721 {
-  function ownerOf(uint256 tokenId) external view returns (address);
-  function totalSupply() external view returns (uint256);
-}
 
 contract Multisig {
-  ERC721 erc721;
+  TerminallyOnline public baseContract;
 
   address public admin;
 
@@ -24,8 +20,8 @@ contract Multisig {
   mapping(uint256 => Proposal) public proposals;
   mapping(uint256 => mapping(uint256 => bool)) public proposalVotes;
 
-  constructor(ERC721 _erc726) {
-    erc721 = _erc726;
+  constructor(TerminallyOnline _addr) {
+    baseContract = _addr;
   }
 
   function hashProposal(
@@ -49,8 +45,7 @@ contract Multisig {
     bytes memory calldata_
   ) public returns (uint256) {
     uint256 proposalId = hashProposal(target, value, calldata_);
-
-    proposals[proposalId].maxVotes = erc721.totalSupply();
+    proposals[proposalId].maxVotes = baseContract.totalSupply();
 
     castVote(proposalId, tokenId, true);
 
@@ -58,7 +53,7 @@ contract Multisig {
   }
 
   function castVote(uint256 proposalId, uint256 tokenId, bool vote) public {
-    require(erc721.ownerOf(tokenId) == msg.sender);
+    require(baseContract.ownerOf(tokenId) == msg.sender);
     if (proposalVotes[proposalId][tokenId] == vote) return;
 
     proposalVotes[proposalId][tokenId] = vote;
@@ -109,34 +104,4 @@ contract Multisig {
 
   receive() external payable {}
   fallback() external payable {}
-}
-
-library Address {
-    // /**
-    //  * @dev Tool to verifies that a low level call was successful, and revert if it wasn't, either by bubbling the
-    //  * revert reason using the provided one.
-    //  *
-    //  * _Available since v4.3._
-    //  */
-    function verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) internal pure returns (bytes memory) {
-        if (success) {
-            return returndata;
-        } else {
-            // Look for revert reason and bubble it up if present
-            if (returndata.length > 0) {
-                // The easiest way to bubble the revert reason is using memory via assembly
-
-                assembly {
-                    let returndata_size := mload(returndata)
-                    revert(add(32, returndata), returndata_size)
-                }
-            } else {
-                revert(errorMessage);
-            }
-        }
-    }
 }
