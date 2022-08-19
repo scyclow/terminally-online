@@ -36,7 +36,7 @@ contract TokenURI {
 
   TerminallyOnline public baseContract;
   string public externalUrl = 'terminallyonline.eth.limo';
-  string public baseURI = 'ipfs://bafybeic6bblt63a4bqb5e3c5xfs75pfxk3cffq4vroemdv46o7hb4hcety';
+  string public baseURI = 'ipfs://bafybeid4srv3fq2pftebblojzxq3mpvfhyndefdk6oikrr5dyy6w45gozi';
 
   constructor(TerminallyOnline _addr) {
     baseContract = _addr;
@@ -84,7 +84,7 @@ contract TokenURI {
     tokens[8].name = 'god';
     tokens[8].displayName = 'God';
     tokens[8].description = 'Disclaimer';
-    tokens[8].uri = 'ipfs://bafkreiaob4jy6zl62bpmuv3nv7oxjv2phwtbwxzrughplbhssg3q4phoxu';
+    tokens[8].uri = 'ipfs://bafkreibgolhs7vlu7kz6m5d52pdfk2noyodacq4sig3w2hd7rn2mmsl63e';
 
     tokens[9].name = 'hell';
     tokens[9].displayName = 'Hell';
