@@ -26,9 +26,22 @@
     stop.terminallyonline.eth
     yes.terminallyonline.eth
 
-  The `multisig` role for this contract is assigned to a multisig wallet where each tokenholder gets one vote.
-  Following this contract's publication, the terminallyonline.eth ENS + all subdoimains will be transferred to the multisig.
-  In addition, the multisig has the sole ability to update the TokenURI contract.
+  Owner Role
+    The owner of this contract has the ability to do two things:
+    1. Update the project license
+    2. Update royalty information
+
+  Multisig Role
+    The multisig role represents the collective will of all token holders of this project, and is managed by an external contract (the multisig contract).
+    The multisig role has the ability to do three things:
+    1. Transfer the multisig role to another address (this can be another contract or an EOA).
+    2. Update the TokenURI contract
+    3. Emit a project-level event
+
+  TokenURI Contract
+    All token URI logic is managed by a separate contract. This allows for multiple possible future states of URI resolution logic, including fully on-chain metadata.
+    The owner of the multisig role on the Terminally Online contract has the ability to update the externalUrl on the TokenURI contract
+
 
 */
 

@@ -1,5 +1,21 @@
 // SPDX-License-Identifier: MIT
 
+/*
+   ______              _           ____
+  /_  __/__ ______ _  (_)__  ___ _/ / /_ __
+   / / / -_) __/  ' \/ / _ \/ _ `/ / / // /
+  /_/__\__/_/ /_/_/_/_/_//_/\_,_/_/_/\_, /
+   / __ \___  / (_)__  ___          /___/
+  / /_/ / _ \/ / / _ \/ -_)
+  \____/_//_/_/_/_//_/\__/
+
+
+TokenURI Contract
+  This contract defines all URI logic for Terminally Online.
+  All values are hardcoded, except for externalUrl. While externalUrl is meant to point to an ENS/IPFS-managed decentralized website, many browsers don't support .eth domain names. As a result, the default externalUrl is set to terminallyonline.eth.limo instead of terminallyonline.eth.
+  The externalUrl can only be updated by the multisig address, as determined by the base Terminally Online contract.
+
+*/
 
 pragma solidity ^0.8.11;
 
@@ -99,6 +115,8 @@ contract TokenURI {
   }
 
   function tokenURI(uint256 tokenId) public view returns (string memory) {
+    require(tokenId < 12, 'URI query for nonexistent token');
+
     string memory name = tokens[tokenId].name;
     string memory displayName = tokens[tokenId].displayName;
     string memory description = tokens[tokenId].description;
