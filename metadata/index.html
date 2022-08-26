@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Terminally Online</title>
+
+  <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAQAAAAIAAAADAAAAAwADAAQAAwAXFhUAAQABAAIAAQADAAEABAABAAIBAAAEAQMAAQACAAIAAgADAAIAAgEBAAMBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggBAAgICQcJCAgICgkIDAcGBwICAgIJCQgICAkIAw8HCAcDCAIIAQgICQIJAgIJCAIHCAIQAggCEAEICAIDAwEICAIBAAIJAgIDAwMICgkJAggJCAgICAkJAggQAwIJCAgCAgIJAgEIAgEBCQMICgEIAgICAggJBwECAg8IEAQCCAgHCQIIAgIIEAgDCAgJCAEBAAgCEQICAQECAgIJBwgBCAcBAQgCCAEABwECCQIIAggCCAgIAggCBwICCQcDAgMCCAIBAwICAQMJCQkJCgMHBwgCAgICAggLEAgIAggICA8IDQkODwgJAgkJDw8FCAgCEAgICAgIDggCCQ4PCQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" rel="icon" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A project by Steve Pikelny, consisting of 12 websites exploring the existential dread of the internet.">
+  <meta
+    name="keywords"
+    content="terminally online, terminally, online, existential dread, existential, dread, nft, nfts, crypto, eth, web3, ens, ipfs, dao, steviep, steviep.eth, internet"
+  >
+
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0.75em 0;
+    }
+
+    main {
+      padding: 0 1vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      column-gap: 1vw;
+      row-gap: 1.5vw;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2em 0;
+    }
+
+    main div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .click-target {
+      position: absolute;
+      margin-top: -20px;
+    }
+
+    iframe, .click-target {
+      width: 23vw;
+      height: 24.5vh;
+    }
+
+    .night-mode {
+      background: #000;
+      color: #fff;
+    }
+    .night-mode a, .night-mode a:visited {
+      color: #fff;
+    }
+
+    .night-mode iframe {
+      border: 1px solid;
+    }
+
+    @media (max-width: 1400px) {
+      main {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      iframe, .click-target {
+        width: 31vw;
+        height: 20vw;
+      }
+    }
+
+    @media (max-width: 950px) {
+      main {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      iframe, .click-target {
+        width: 48vw;
+        height: 30vw;
+      }
+    }
+
+    @media (max-width: 620px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      iframe, .click-target {
+        width: 97vw;
+        height: 60vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Terminally Online</h1>
+  <main>
+    <div>
+      <iframe src="./time.html"></iframe>
+      <caption>Time</caption>
+      <a class="click-target" target="_blank" href="./time.html"></a>
+    </div>
+
+    <div>
+      <iframe src="./money.html"></iframe>
+      <caption>Money</caption>
+      <a class="click-target" target="_blank" href="./money.html"></a>
+    </div>
+
+    <div>
+      <iframe src="./life.html"></iframe>
+      <caption>Life</caption>
+      <a class="click-target" target="_blank" href="./life.html"></a>
+    </div>
+
+    <div>
+      <iframe src="./death.html"></iframe>
+      <caption>Death</caption>
+      <a class="click-target" target="_blank" href="./death.html"></a>
+    </div>
+
+    <div>
+      <iframe src="./fomo.html"></iframe>
+      <caption>FOMO</caption>
+      <a class="click-target" target="_blank" href="./fomo.html"></a>
+    </div>
+
+    <div>
+      <iframe src="./fear.html"></iframe>
+      <caption>Fear</caption>
+      <a class="click-target" target="_blank" href="./fear.html"></a>
+    </div>
+
+    <div>
+      <iframe src="./uncertainty.html"></iframe>
+      <caption>Uncertainty</caption>
+      <a class="click-target" target="_blank" href="./uncertainty.html"></a>
+    </div>
+
+    <div>
+      <iframe src="./doubt.html"></iframe>
+      <caption>Doubt</caption>
+      <a class="click-target" target="_blank" href="./doubt.html"></a>
+    </div>
+
+    <div>
+      <iframe src="./god.html"></iframe>
+      <caption>God</caption>
+      <a class="click-target" target="_blank" href="./god.html"></a>
+    </div>
+
+    <div>
+      <iframe src="./hell.html"></iframe>
+      <caption>Hell</caption>
+      <a class="click-target" target="_blank" href="./hell.html"></a>
+    </div>
+
+    <div>
+      <iframe src="./stop.html"></iframe>
+      <caption>Stop</caption>
+      <a class="click-target" target="_blank" href="./stop.html"></a>
+    </div>
+
+    <div>
+      <iframe src="./yes.html"></iframe>
+      <caption>Yes</caption>
+      <a class="click-target" target="_blank" href="./yes.html"></a>
+    </div>
+  </main>
+
+  <footer>
+    <a href="https://steviep.xyz" target="_blank">steviep.xyz</a> (2022)
+  </footer>
+
+</body>
+
+<script type="text/javascript">
+  var hours = new Date().getHours();
+  if (hours < 5 || hours > 22) document.body.className = 'night-mode';
+
+</script>
+</html>

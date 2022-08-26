@@ -308,4 +308,29 @@ describe('TerminallyOnline', () => {
     })
   })
 
+  describe('TokenURI2', () => {
+    it.only('upgrades', async () => {
+      const TokenURI2Factory = await ethers.getContractFactory('TokenURI2', artist)
+      const TokenURI2 = await TokenURI2Factory.deploy(TerminallyOnline.address)
+      await TokenURI2.deployed()
+
+      const originalURI = await TerminallyOnline.connect(artist).tokenURI(3)
+
+
+      const resetURICallData = encodeWithSignature('setTokenURIContract', ['address'], [TokenURI2.address])
+      await Multisig.connect(collector1).propose(0, TerminallyOnline.address, 0, resetURICallData)
+      const proposalId = await Multisig.connect(collector1).hashProposal(TerminallyOnline.address, 0, resetURICallData)
+
+      await sixVotes(proposalId)
+      await Multisig.connect(collector1).execute(TerminallyOnline.address, 0, resetURICallData)
+
+
+      const newURI = await TerminallyOnline.connect(artist).tokenURI(3)
+
+      expect(originalURI !== newURI).to.equal(true)
+
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+      console.log(newURI)
+    })
+  })
 })
